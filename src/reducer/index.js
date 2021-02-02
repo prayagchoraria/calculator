@@ -1,12 +1,18 @@
-import {CALCULATE, CLEAR, EQUALS, NUMBER} from '../utils/constants';
+import {CALCULATE, CALCULATE_SCIENTIFIC, CLEAR, EQUALS, NUMBER, SCIENTIFIC_MODE} from '../utils/constants';
 import operations from '../utils/operations';
+import scientificOperations from '../utils/scientificOperations';
 
-export const INITIAL_STATE = {
+export const INITIAL_STATE_CALCULATOR = {
   calculated: true,
   display: 0,
   operation: null,
   reset: true,
   result: 0,
+}
+
+export const INITIAL_STATE = {
+  ...INITIAL_STATE_CALCULATOR,
+  scientificMode: false,
 }
 
 const reducer = (state, action) => {
@@ -42,9 +48,32 @@ const reducer = (state, action) => {
       }
     }
 
+    case CALCULATE_SCIENTIFIC: {
+      const {
+        operationType,
+      } = action;
+
+      const {
+        display,
+      } = state;
+
+      const value = scientificOperations[operationType](display);
+
+      return {
+        ...state,
+        calculated: true,
+        display: value,
+        operation: null,
+        reset: false,
+        result: value,
+      }
+
+    }
+
     case CLEAR: {
       return {
-        ...INITIAL_STATE,
+        ...state,
+        ...INITIAL_STATE_CALCULATOR,
       }
     }
 
@@ -88,6 +117,17 @@ const reducer = (state, action) => {
         calculated: false,
         display: calculated || reset ? number : display * 10 + number,
         reset: false,
+      }
+    }
+
+    case SCIENTIFIC_MODE: {
+      const {
+        scientificMode,
+      } = state;
+
+      return {
+        ...state,
+        scientificMode: !scientificMode,
       }
     }
 

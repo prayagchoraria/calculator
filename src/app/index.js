@@ -2,6 +2,7 @@ import {useReducer} from 'react'
 import styled from 'styled-components';
 import KeyPad from '../components/keypad';
 import reducer, {INITIAL_STATE} from '../reducer';
+import Menu from '../components/menu';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +12,6 @@ const Wrapper = styled.div`
 `;
 
 const Calculator = styled.div`
-  width: 500px;
   display: table;
   border: 1px solid #000000;
 `;
@@ -35,11 +35,18 @@ const App = () => {
   return (
     <Wrapper>
       <Calculator>
+        <Menu
+          dispatch={dispatch}
+          scientificMode={store.scientificMode}
+        />
+
         <Display>
           {store.display}
         </Display>
+
         <KeyPad
           dispatch={dispatch}
+          scientificMode={store.scientificMode}
         />
       </Calculator>
     </Wrapper>

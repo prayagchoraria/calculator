@@ -1,8 +1,13 @@
 export const ADD = 'ADD';
 export const CALCULATE = 'CALCULATE';
+export const CALCULATE_SCIENTIFIC = 'CALCULATE_SCIENTIFIC';
 export const CLEAR = 'CLEAR';
 export const DIVIDE = 'DIVIDE';
 export const EQUALS = 'EQUALS';
 export const MULTIPLY = 'MULTIPLY';
 export const NUMBER = 'NUMBER';
+export const SCIENTIFIC_MODE = 'SCIENTIFIC_MODE';
+export const SIGN = 'SIGN';
+export const SQUARE = 'SQUARE';
+export const SQUARE_ROOT = 'SQUARE_ROOT';
 export const SUBTRACT = 'SUBTRACT';
