@@ -1,4 +1,4 @@
-import {CALCULATE, CALCULATE_SCIENTIFIC, CLEAR, EQUALS, NUMBER, SCIENTIFIC_MODE} from '../utils/constants';
+import {CALCULATE, CALCULATE_SCIENTIFIC, CLEAR, EQUALS, LIGHT, NUMBER, SCIENTIFIC_MODE, THEME_CHANGE} from '../utils/constants';
 import operations from '../utils/operations';
 import scientificOperations from '../utils/scientificOperations';
 
@@ -13,6 +13,7 @@ export const INITIAL_STATE_CALCULATOR = {
 export const INITIAL_STATE = {
   ...INITIAL_STATE_CALCULATOR,
   scientificMode: false,
+  theme: LIGHT,
 }
 
 const reducer = (state, action) => {
@@ -128,6 +129,17 @@ const reducer = (state, action) => {
       return {
         ...state,
         scientificMode: !scientificMode,
+      }
+    }
+
+    case THEME_CHANGE: {
+      const {
+        theme,
+      } = action;
+
+      return {
+        ...state,
+        theme,
       }
     }
 

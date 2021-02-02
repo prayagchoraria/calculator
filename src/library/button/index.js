@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import themes from "../../utils/themes";
 
 const StyledButton = styled.div`
   align-items: center;
-  background: ${props => props.active ? '#909090' : '#f0f0f0'};
-  border: 2px solid #000000;
+  background: ${props => props.active ? '#a1a1a1' : themes[props.theme].buttonBackground};
+  border: 2px solid ${props => themes[props.theme].font};;
   box-sizing: border-box;
+  color: ${props => themes[props.theme].font};
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -16,7 +18,7 @@ const StyledButton = styled.div`
 
   ${props => !props.active ? `&:hover {
     background: #d0d0d0;
-  }`: ''}
+  }` : ''}
 `;
 
 const Button = (
@@ -25,12 +27,14 @@ const Button = (
     label,
     onClick,
     width,
+    theme,
   }
 ) => (
   <StyledButton
     active={active}
     onClick={onClick}
     width={width}
+    theme={theme}
   >
     {label}
   </StyledButton>
@@ -41,6 +45,7 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   width: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
 }
 
 export default Button;

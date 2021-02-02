@@ -6,6 +6,7 @@ const NumberKey = (
   {
     dispatch,
     number,
+    theme,
   }
 ) => {
   const handleClick = () => {
@@ -19,6 +20,7 @@ const NumberKey = (
       label={number}
       onClick={handleClick}
       width={120}
+      theme={theme}
     />
   );
 }
@@ -26,6 +28,7 @@ const NumberKey = (
 NumberKey.propTypes = {
   dispatch: PropTypes.func.isRequired,
   number: PropTypes.number.isRequired,
+  theme: PropTypes.string.isRequired,
 }
 
 export default NumberKey;

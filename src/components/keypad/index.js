@@ -12,20 +12,24 @@ const KeyPad = (
   {
     dispatch,
     scientificMode,
+    theme,
   }
 ) => (
   <KeypadWrapper>
     <NumbersKeypad
       dispatch={dispatch}
+      theme={theme}
     />
 
     <OperatorsKeypad
       dispatch={dispatch}
+      theme={theme}
     />
 
     {scientificMode && (
       <ScientificOperatorsKeypad
         dispatch={dispatch}
+        theme={theme}
       />
     )}
   </KeypadWrapper>
@@ -34,6 +38,7 @@ const KeyPad = (
 KeyPad.propTypes = {
   dispatch: PropTypes.func.isRequired,
   scientificMode: PropTypes.bool.isRequired,
+  theme: PropTypes.string.isRequired,
 }
 
 export default KeyPad;

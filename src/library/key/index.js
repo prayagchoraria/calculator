@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import themes from "../../utils/themes";
 
 const StyledKey = styled.div`
   align-items: center;
-  background: #f0f0f0;
-  border: 1px solid #000000;
+  background: ${props => themes[props.theme].buttonBackground};
+  border: 1px solid ${props => themes[props.theme].font};
   box-sizing: border-box;
+  color: ${props => themes[props.theme].font};
   cursor: pointer;
   display: flex;
   font-size: 20px;
@@ -26,6 +28,7 @@ const Key = (
     label,
     onClick,
     width,
+    theme,
   }
 ) => (
   <StyledKey
@@ -33,6 +36,7 @@ const Key = (
     justifyContent={justifyContent}
     onClick={onClick}
     width={width}
+    theme={theme}
   >
     {label}
   </StyledKey>
@@ -47,6 +51,7 @@ Key.propTypes = {
   ]),
   onClick: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
+  theme: PropTypes.string.isRequired,
 }
 
 export default Key;
